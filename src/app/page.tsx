@@ -1,101 +1,66 @@
-import Image from "next/image";
+"use client";
+
+import { wordsData } from "@/components/data";
+import { useState } from "react";
+
+const pages = [
+  ["about", 2.5],
+  ["experience", 2.75],
+  ["projects", 3],
+  ["contact", 3.25],
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [hovered, setHovered] = useState<string | null>();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="p-10">
+      <div className="space-y-12">
+        <h1 className="text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-white">
+          weabonie's portfolio
+        </h1>
+
+        <div className="w-1/2">
+          <ul className="text-4xl space-y-4 px-12">
+            {pages.map((page, i) => {
+              const className = `hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_${page[1]}s]`;
+              return (
+                <li
+                  key={i}
+                  onMouseLeave={() => setHovered(null)}
+                  onMouseOver={() => {
+                    typeof page[0] == "string" && setHovered(page[0]);
+                  }}
+                  className={className}
+                >
+                  <a href={`/${page[0]}`}>
+                    {">"} {page[0]}
+                  </a>
+                </li>
+              );
+            })}
+
+            {/* <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_2.5s]`}><a href={`/about`}>{'>'} {"about"}</a></li>
+            <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_2.75s]`}><a href={`/experience`}>{'>'} {"experience"}</a></li>
+            <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_3s]`}><a href={`/projects`}>{'>'} {"projects"}</a></li>
+            <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_3.25s]`}><a href={`/contact`}>{'>'} {"contact"}</a></li>           */}
+          </ul>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {hovered && (
+          <div className="w-full h-[150px] px-10 py-2">
+            <div className="font-serif text-2xl">
+              <span className="font-bold">{hovered}</span>{" "}
+              <span>
+                {" "}
+                {wordsData[hovered as keyof typeof wordsData].pronounciation}
+              </span>
+             
+            </div>
+            <div className="text-xl">{wordsData[hovered as keyof typeof wordsData].definition}</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
