@@ -22,7 +22,7 @@ export default function About() {
 				setTogglePrint(false);
 				setToggleSocials(true);
 			}, 1500);
-		}, 500);
+		}, 1000);
 	}, []);
 
     const emailLink = "mailto:weabonie@gmail.com"
