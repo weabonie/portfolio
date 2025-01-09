@@ -6,7 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function About() {
-	const title = "projects";
+	const title = "/projects";
+    const titleClass = "text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(9)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(9)_forwards,_blink_1s_steps(9)_infinite_1s] after:bg-white"
 
 	const [projIndex, setProjIndex] = useState<number>(0);
 
@@ -25,7 +26,7 @@ export default function About() {
 	return (
 		<main className="p-10">
 			<div className="space-y-10">
-				<h1 className="text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(8)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(8)_forwards,_blink_1s_steps(8)_infinite_1s] after:bg-white">
+				<h1 className={titleClass}>
 					{title}
 				</h1>
 
@@ -35,7 +36,7 @@ export default function About() {
 			</div>
 
 			<section>
-				<div className="flex flex-col space-y-4 justify-start items-center ">
+				<div className="flex flex-col space-y-2 justify-start items-center ">
 					<div className="w-3/4 flex justify-between items-center space-x-4">
 						<div
 							className={`opacity-70 scale-75 space-y-4 ${projectsData[projIndex - 1] ? "visible" : "invisible"}`}
@@ -43,7 +44,7 @@ export default function About() {
 							<Image
 								width={600}
 								height={400}
-								alt="NextUI Album Cover"
+								alt="Project thumbnail"
 								src={`/projects${projectsData[projIndex - 1]?.thumbnail || "/placeholder.png"}`}
 							/>
 							{projectsData[projIndex - 1] && (
@@ -57,7 +58,7 @@ export default function About() {
 							<Image
 								width={600}
 								height={400}
-								alt="NextUI Album Cover"
+								alt="Project thumbnail"
 								src={`/projects${projectsData[projIndex]?.thumbnail || "/placeholder.png"}`}
 							/>
 						</div>
@@ -68,7 +69,7 @@ export default function About() {
 							<Image
 								width={600}
 								height={400}
-								alt="NextUI Album Cover"
+								alt="Project thumbnail"
 								src={`/projects${projectsData[projIndex + 1]?.thumbnail || "/placeholder.png"}`}
 							/>
 							{projectsData[projIndex + 1] && (
@@ -100,6 +101,8 @@ export default function About() {
 					</div>
 
 					<div className="flex flex-col space-y-7 w-[40%] text-center text-lg">
+                        <p className="h-0 font-light text-title">{projectsData[projIndex].date}</p>
+
 						<p className="h-12">{projectsData[projIndex].description}</p>
 
 						<Link

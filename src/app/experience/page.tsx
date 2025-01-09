@@ -3,9 +3,9 @@
 import Link from "next/link";
 
 export default function About() {
-	const title = "experience";
+	const title = "/experience";
 	const titleClass =
-		"text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(10)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(10)_forwards,_blink_1s_steps(10)_infinite_1s] after:bg-white";
+		"text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(11)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(11)_forwards,_blink_1s_steps(11)_infinite_1s] after:bg-white";
 
 	return (
 		<div className="p-10">

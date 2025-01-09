@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "PORTFLIO_",
-	description: "welcome2tomyportfolio",
+	title: "weab's portfolio shell",
+	description: "duc nguyen's portfolio",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
 					{children}
 
 					<section className="font-light text-gray-400 text-base absolute bottom-[6%] left-1/2 -translate-x-1/2 text-center">
-						<div>weab portfolio shell [ver 0.1]</div>
+						<div>weab's portfolio shell [ver 0.1]</div>
 						<div>(c) 2025 Weabonie</div>
 					</section>
 				</TerminalProvider>

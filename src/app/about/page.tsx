@@ -25,11 +25,14 @@ export default function About() {
   <li>+-----------------------+</li>
   `;
 
+  const title = "/about"
+  const titleClass = "text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(6)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(6)_forwards,_blink_1s_steps(6)_infinite_1s] after:bg-white"
+
 	return (
 		<div className="p-10">
 			<div className="space-y-8">
-				<h1 className="text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(5)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(5)_forwards,_blink_1s_steps(5)_infinite_1s] after:bg-white">
-					about
+				<h1 className={titleClass}>
+					{title}
 				</h1>
 
 				<Link href="/" className="text-2xl font-semibold hover:text-console">

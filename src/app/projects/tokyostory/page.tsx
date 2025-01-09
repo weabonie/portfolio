@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 export default function About() {
-    const title = "contact"
+    const title = "tokyo-story"
 	return (
 		<div className="p-10">
 			<div className="space-y-10">
@@ -15,7 +15,9 @@ export default function About() {
 					{">"} back to projects
 				</Link>
 
-				
+				<section className="text-xl space-y-5">
+					<p>WIP ;-;</p>
+				</section>
 			</div>
 		</div>
 	);
