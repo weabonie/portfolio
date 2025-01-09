@@ -61,11 +61,11 @@ export default function Home() {
 				setTimeout(() => {
 					setMenuBtns((prevMenuBtns) => [...prevMenuBtns, page[0]]);
 
-          setTimeout(() => {
-            if (index === pages.length - 1) {
-              setShowDonut(true)
-            }
-          }, 250)
+					setTimeout(() => {
+						if (index === pages.length - 1) {
+							setShowDonut(true);
+						}
+					}, 250);
 				}, Number(page[1]) * 1000);
 			});
 		};
@@ -80,10 +80,11 @@ export default function Home() {
 				}, 1000);
 			}, 1500);
 		} else {
-			pages.forEach((page, index) => {
+			for (let index = 0; index < pages.length; index++) {
+				const page = pages[index];
 				setMenuBtns((prevMenuBtns) => [...prevMenuBtns, page[0]]);
-        setShowDonut(true)
-			});
+				setShowDonut(true);
+			}
 		}
 	}, []);
 
@@ -111,7 +112,7 @@ export default function Home() {
 						scaleY={1}
 						frameInterval={50}
 						fontSize={9}
-            color={"white"}
+						color={"white"}
 					/>
 				</section>
 			)}
