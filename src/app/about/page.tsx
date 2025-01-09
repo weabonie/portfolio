@@ -39,7 +39,7 @@ export default function About() {
 					{">"} back to home
 				</Link>
 
-				<section className="text-xl space-y-5">
+				<section className="text-xl space-y-4">
 					<p>
 						$ Hello! My name is{" "}
 						<span className="text-cyan-200 font-bold">Duc Nguyen</span>, but you
@@ -55,6 +55,10 @@ export default function About() {
 						</span>
 						.
 					</p>
+
+          {/* <p>
+						$ I am also experienced in <span className="font-bold">web development</span> and <span className="font-bold">ROBLOX game design</span>.
+					</p> */}
 
 					<p>
 						$ I always have a deep passion in blending{" "}
