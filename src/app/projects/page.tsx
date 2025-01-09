@@ -1,7 +1,6 @@
 "use client";
 
 import { projectsData } from "@/components/data";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -41,7 +40,7 @@ export default function About() {
 						<div
 							className={`opacity-70 scale-75 space-y-4 ${projectsData[projIndex - 1] ? "visible" : "invisible"}`}
 						>
-							<Image
+							<img
 								width={600}
 								height={400}
 								alt="Project thumbnail"
@@ -55,7 +54,7 @@ export default function About() {
 						</div>
 
 						<div>
-							<Image
+							<img
 								width={600}
 								height={400}
 								alt="Project thumbnail"
@@ -66,7 +65,7 @@ export default function About() {
 						<div
 							className={`opacity-70 scale-75 space-y-4 ${projectsData[projIndex + 1] ? "visible" : "invisible"}`}
 						>
-							<Image
+							<img
 								width={600}
 								height={400}
 								alt="Project thumbnail"
