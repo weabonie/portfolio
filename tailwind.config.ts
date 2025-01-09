@@ -9,14 +9,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        terminal: "#98c278",
+        console: "#e4c17b",
+        title: "#60afee",
+
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
 
       animation: {
-        typewriter: "typewriter 2s steps(20) forwards",
+        typewriter: "typewriter 1.25s steps(20) forwards",
         caret:
-          "typewriter 2s steps(20) forwards, blink 1s steps(20) infinite 2s",
+          "typewriter 1.25s steps(20) forwards, blink 1.25s steps(20) infinite 1.25s",
         
       },
 

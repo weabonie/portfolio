@@ -1,66 +1,174 @@
 "use client";
 
+// @ts-expect-error: Should still import Donut
+import Donut from "react-spinning-donut";
+
 import { wordsData } from "@/components/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useTerminalLoading } from "@/components/bootContext";
 
 const pages = [
-  ["about", 2.5],
-  ["experience", 2.75],
-  ["projects", 3],
-  ["contact", 3.25],
+	["about", "1.5"],
+	["experience", "1.75"],
+	["projects", "2"],
+	["contact", "2.25"],
 ];
 
+const emoticonList = [
+	"ಠ_ಠ",
+	"^_^",
+	"(=^ェ^=)",
+	"(｡◕‿◕｡)",
+	"｡^‿^｡",
+	"(¬_¬)",
+	"( ͡° ͜ʖ ͡°)",
+	"( •_•)",
+	"(ᗒᗣᗕ)՞",
+	"(•‿•)",
+	"(◕‿◕)",
+	"◉‿◉",
+	"(>_<)",
+	"(⋟﹏⋞)",
+	"(◣_◢)",
+	"(•ㅅ•)",
+];
+
+function getRandom(list: string[]) {
+	return list[Math.floor(Math.random() * list.length)];
+}
+
 export default function Home() {
-  const [hovered, setHovered] = useState<string | null>();
+	const [bootText, setBootText] = useState<string>("booting...");
+	const { isLoaded, setIsLoaded } = useTerminalLoading();
 
-  return (
-    <div className="p-10">
-      <div className="space-y-12">
-        <h1 className="text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-white">
-          weabonie's portfolio
-        </h1>
+	const [hovered, setHovered] = useState<string | null>();
+	const [emoticon, setEmoticon] = useState<string>(getRandom(emoticonList));
 
-        <div className="w-1/2">
-          <ul className="text-4xl space-y-4 px-12">
-            {pages.map((page, i) => {
-              const className = `hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_${page[1]}s]`;
-              return (
-                <li
-                  key={i}
-                  onMouseLeave={() => setHovered(null)}
-                  onMouseOver={() => {
-                    typeof page[0] == "string" && setHovered(page[0]);
-                  }}
-                  className={className}
-                >
-                  <a href={`/${page[0]}`}>
-                    {">"} {page[0]}
-                  </a>
-                </li>
-              );
-            })}
+	const [showDonut, setShowDonut] = useState<boolean>(false);
 
-            {/* <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_2.5s]`}><a href={`/about`}>{'>'} {"about"}</a></li>
-            <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_2.75s]`}><a href={`/experience`}>{'>'} {"experience"}</a></li>
-            <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_3s]`}><a href={`/projects`}>{'>'} {"projects"}</a></li>
-            <li onMouseOver={onHover} className={`hover:underline invisible animate-[showCmd_0s_steps(11)_forwards_3.25s]`}><a href={`/contact`}>{'>'} {"contact"}</a></li>           */}
-          </ul>
-        </div>
+	const [menuBtns, setMenuBtns] = useState<string[]>([]);
 
-        {hovered && (
-          <div className="w-full h-[150px] px-10 py-2">
-            <div className="font-serif text-2xl">
-              <span className="font-bold">{hovered}</span>{" "}
-              <span>
-                {" "}
-                {wordsData[hovered as keyof typeof wordsData].pronounciation}
-              </span>
-             
-            </div>
-            <div className="text-xl">{wordsData[hovered as keyof typeof wordsData].definition}</div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+	const onHovered = (hovering: string) => {
+		setHovered(hovering);
+		setEmoticon(getRandom(emoticonList));
+	};
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	useEffect(() => {
+		const startUp = () => {
+			pages.forEach((page, index) => {
+				setTimeout(() => {
+					setMenuBtns((prevMenuBtns) => [...prevMenuBtns, page[0]]);
+
+          setTimeout(() => {
+            if (index === pages.length - 1) {
+              setShowDonut(true)
+            }
+          }, 250)
+				}, Number(page[1]) * 1000);
+			});
+		};
+
+		if (isLoaded === false) {
+			setTimeout(() => {
+				setBootText("success!");
+
+				setTimeout(() => {
+					setIsLoaded(true);
+					startUp();
+				}, 1000);
+			}, 1500);
+		} else {
+			pages.forEach((page, index) => {
+				setMenuBtns((prevMenuBtns) => [...prevMenuBtns, page[0]]);
+        setShowDonut(true)
+			});
+		}
+	}, []);
+
+	if (!isLoaded)
+		return (
+			<main>
+				<section>
+					<h1 className="text-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+						{bootText}
+					</h1>
+				</section>
+			</main>
+		);
+
+	return (
+		<main className="p-10">
+			{showDonut && (
+				<section
+					className={
+						"absolute left-3/4 top-[45%] -translate-x-1/2 -translate-y-1/2"
+					}
+				>
+					<Donut
+						scaleX={2.4}
+						scaleY={1}
+						frameInterval={50}
+						fontSize={9}
+            color={"white"}
+					/>
+				</section>
+			)}
+
+			<section className="space-y-12 z-10">
+				<section>
+					<h1 className="text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-white">
+						weabonie&apos;s portfolio
+					</h1>
+
+					<div className="text-2xl font-bold text-gray-400">
+						{"> "}
+						{emoticon}
+					</div>
+				</section>
+
+				<section className="flex flex-col h-[370px] justify-start">
+					<ul className="h-[300px] text-4xl font-semibold space-y-4 px-12">
+						{menuBtns.map((page, i) => {
+							return (
+								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+								<li key={i}>
+									<Link
+										onMouseLeave={() => setHovered(null)}
+										onFocus={() => onHovered(page)}
+										onMouseOver={() => onHovered(page)}
+										className="hover:text-console"
+										href={`/${page}`}
+									>
+										{page === hovered ? `> ${page}` : `\u00A0\u00A0${page}`}
+									</Link>
+								</li>
+							);
+						})}
+					</ul>
+
+					<div className="w-full h-[150px] px-10 py-12 text-2xl">
+						{hovered && (
+							<>
+								<div className="font-serif text-terminal">
+									<span className="font-bold">{hovered}</span>{" "}
+									<span>
+										{" "}
+										{
+											wordsData[hovered as keyof typeof wordsData]
+												.pronounciation
+										}
+									</span>
+								</div>
+								<div>
+									{wordsData[hovered as keyof typeof wordsData].definition}
+								</div>
+							</>
+						)}
+					</div>
+				</section>
+			</section>
+		</main>
+	);
 }
