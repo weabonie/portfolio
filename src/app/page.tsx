@@ -52,6 +52,8 @@ export default function Home() {
 	const [matches, setMatches] = useState<boolean>(false);
 
 	useEffect(() => {
+		setMatches(window.matchMedia("(min-width: 768px)").matches)
+
 		window
 			.matchMedia("(min-width: 768px)")
 			.addEventListener("change", (e) => setMatches(e.matches));
