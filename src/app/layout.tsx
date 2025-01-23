@@ -32,7 +32,7 @@ export default function RootLayout({
 					{children}
 
 					<section className="invisible lg:visible font-light text-gray-400 text-base absolute bottom-12 left-1/2 -translate-x-1/2 text-center">
-						<div>weab's portfolio shell [ver 0.1]</div>
+						<div>weab's portfolio shell [ver 0.3]</div>
 						<div>(c) 2025 Weabonie</div>
 					</section>
 				</TerminalProvider>
