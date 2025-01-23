@@ -11,7 +11,7 @@ export const BackButton = ({ page, path }: { page: string; path?: string }) => {
 			onMouseLeave={() => setHovered(false)}
 			onMouseOver={() => setHovered(true)}
 			href={`/${path || page}`}
-			className="relative text-2xl font-semibold hover:text-console ml-10"
+			className="relative text-2xl font-semibold hover:text-console transition-colors ml-10"
 		>
 			<div className="absolute left-0 -translate-x-10 animate-homeSelect">
 				{">"}
