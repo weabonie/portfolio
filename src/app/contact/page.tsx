@@ -47,7 +47,7 @@ export default function About() {
 				<BackButton page="home" path="/" />
 
 				<section className="text-xl space-y-5">
-					<h1 className="text-3xl">
+					<h1 className="text-xl md:text-3xl">
 						Let's <span className="font-bold text-title">work</span> together!
 						{!toggleSocials ? " Wait for a sec." : " Here."}
 					</h1>
@@ -58,7 +58,7 @@ export default function About() {
 
 					{toggleSocials && (
 						<ul
-							className="text-3xl px-10 space-y-3"
+							className="text-2xl md:text-3xl md:px-10 space-y-1 md:space-y-3"
 							// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 							dangerouslySetInnerHTML={{ __html: contactTableHTML }}
 						/>

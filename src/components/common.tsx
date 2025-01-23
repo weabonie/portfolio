@@ -21,4 +21,4 @@ export const BackButton = ({ page, path }: { page: string; path?: string }) => {
 	);
 };
 
-export const titleClass = "text-6xl md:text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(6)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(6)_forwards,_blink_1s_steps(6)_infinite_1s] after:bg-white"
+export const titleClass = "text-4xl mb-1 md:mb-0 md:text-7xl h-17 md:h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(6)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(6)_forwards,_blink_1s_steps(6)_infinite_1s] after:bg-white"

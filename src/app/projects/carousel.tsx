@@ -20,7 +20,7 @@ export default function Carousel({
 	};
 
 	return (
-		<section>
+		<section className="flex justify-center items-center">
 			<Swiper
 				lazyPreloaderClass={"swiper-lazy-preloader"}
 				effect={"coverflow"}
@@ -37,7 +37,7 @@ export default function Carousel({
 				}}
 				pagination
 				modules={[EffectCoverflow, Pagination]}
-				className="w-full h-[500px]"
+				className="w-screen h-[550px]"
 				onSlideChange={handleChange}
 			>
 				{projectsData.map((project, index) => (
