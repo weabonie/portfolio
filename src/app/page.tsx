@@ -49,9 +49,7 @@ export default function Home() {
 
 	const [menuBtns, setMenuBtns] = useState<string[]>([]);
 
-	const [matches, setMatches] = useState(
-		window.matchMedia("(min-width: 768px)").matches,
-	);
+	const [matches, setMatches] = useState<boolean>(false);
 
 	useEffect(() => {
 		window
