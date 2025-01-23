@@ -49,6 +49,16 @@ export default function Home() {
 
 	const [menuBtns, setMenuBtns] = useState<string[]>([]);
 
+	const [matches, setMatches] = useState(
+		window.matchMedia("(min-width: 768px)").matches,
+	);
+
+	useEffect(() => {
+		window
+			.matchMedia("(min-width: 768px)")
+			.addEventListener("change", (e) => setMatches(e.matches));
+	}, []);
+
 	const onHovered = (hovering: string) => {
 		setHovered(hovering);
 		setEmoticon(getRandom(emoticonList));
@@ -69,6 +79,8 @@ export default function Home() {
 				}, Number(page[1]) * 1000);
 			});
 		};
+
+		setMenuBtns([]);
 
 		if (isLoaded === false) {
 			setTimeout(() => {
@@ -100,37 +112,37 @@ export default function Home() {
 		);
 
 	return (
-		<main className="p-10">
+		<main className="p-7 md:p-10">
 			{showDonut && (
 				<section
 					className={
-						"absolute left-3/4 top-[45%] -translate-x-1/2 -translate-y-1/2"
+						"absolute left-1/2 md:left-3/4 top-[65%] md:top-[45%] -translate-x-1/2 -translate-y-1/2"
 					}
 				>
 					<Donut
 						scaleX={2.4}
 						scaleY={1}
 						frameInterval={50}
-						fontSize={9}
+						fontSize={matches ? 9 : 4}
 						color={"white"}
 					/>
 				</section>
 			)}
 
-			<section className="space-y-12 z-10">
-				<section>
-					<h1 className="text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-white">
+			<section className="space-y-9 md:space-y-12 z-10 w-[max-content]">
+				<section className="w-[max-content]">
+					<h1 className="text-3xl md:text-6xl lg:text-7xl h-9 md:h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-white">
 						weabonie&apos;s portfolio
 					</h1>
 
-					<div className="text-2xl font-bold text-gray-400">
+					<div className="text-xl md:text-2xl w-[max-content] font-bold text-gray-400">
 						{"> "}
 						{emoticon}
 					</div>
 				</section>
 
-				<section className="flex flex-col h-[370px] justify-start">
-					<ul className="h-[300px] text-4xl font-semibold space-y-4 px-12">
+				<section className="flex flex-col h-[370px] w-[max-content] justify-start">
+					<ul className="h-[300px] text-2xl md:text-4xl font-semibold space-y-2 md:space-y-4 px-7 md:px-12">
 						{menuBtns.map((page, i) => {
 							return (
 								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -139,17 +151,22 @@ export default function Home() {
 										onMouseLeave={() => setHovered(null)}
 										onFocus={() => onHovered(page)}
 										onMouseOver={() => onHovered(page)}
-										className="hover:text-console"
+										className="hover:text-console relative transition-colors"
 										href={`/${page}`}
 									>
-										{page === hovered ? `> ${page}` : `\u00A0\u00A0${page}`}
+										{hovered === page && (
+											<div className="absolute left-0 -translate-x-12 animate-homeSelect">
+												{">"}
+											</div>
+										)}
+										<span>{page}</span>
 									</Link>
 								</li>
 							);
 						})}
 					</ul>
 
-					<div className="w-full h-[150px] px-10 py-12 text-2xl">
+					<div className="w-full h-[150px] px-10 py-12 text-2xl hidden md:block">
 						{hovered && (
 							<>
 								<div className="font-serif text-terminal">

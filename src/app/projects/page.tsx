@@ -1,115 +1,67 @@
 "use client";
 
-import { projectsData } from "@/components/data";
-import Link from "next/link";
 import { useState } from "react";
+import Carousel from "./carousel";
+import { BackButton, titleClass } from "@/components/common";
+import { projectsData } from "@/components/data";
+import { FaGithub, FaLink } from "react-icons/fa";
+import Link from "next/link";
 
 export default function About() {
 	const title = "/projects";
-    const titleClass = "text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(9)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(9)_forwards,_blink_1s_steps(9)_infinite_1s] after:bg-white"
 
 	const [projIndex, setProjIndex] = useState<number>(0);
-
-	const handleLeft = () => {
-		if (projIndex > 0) {
-			setProjIndex(projIndex - 1);
-		}
-	};
-
-	const handleRight = () => {
-		if (projIndex < projectsData.length - 1) {
-			setProjIndex(projIndex + 1);
-		}
-	};
+	// console.log(projectsData[projectIndex].name)
 
 	return (
-		<main className="p-10">
+		<main className="p-7 md:p-10 space-y-5">
 			<div className="space-y-10">
-				<h1 className={titleClass}>
-					{title}
-				</h1>
+				<h1 className={titleClass}>{title}</h1>
 
-				<Link href="/" className="text-2xl font-semibold hover:text-console">
-					{">"} back to home
-				</Link>
+				<BackButton page="home" path="/" />
 			</div>
 
-			<section>
-				<div className="flex flex-col space-y-2 justify-start items-center ">
-					<div className="w-3/4 flex justify-between items-center space-x-4">
-						<div
-							className={`opacity-70 scale-75 space-y-4 ${projectsData[projIndex - 1] ? "visible" : "invisible"}`}
-						>
-							<img
-								width={600}
-								height={400}
-								alt="Project thumbnail"
-								src={`/projects${projectsData[projIndex - 1]?.thumbnail || "/placeholder.png"}`}
-							/>
-							{projectsData[projIndex - 1] && (
-								<div className="text-center font-bold">
-									{projectsData[projIndex - 1].name}
-								</div>
-							)}
-						</div>
+			<section className="flex flex-col justify-center items-center space-y-4">
+				<Carousel
+					projectProps={{ projIndex: projIndex, setProjIndex: setProjIndex }}
+				/>
 
-						<div>
-							<img
-								width={600}
-								height={400}
-								alt="Project thumbnail"
-								src={`/projects${projectsData[projIndex]?.thumbnail || "/placeholder.png"}`}
-							/>
-						</div>
-
-						<div
-							className={`opacity-70 scale-75 space-y-4 ${projectsData[projIndex + 1] ? "visible" : "invisible"}`}
-						>
-							<img
-								width={600}
-								height={400}
-								alt="Project thumbnail"
-								src={`/projects${projectsData[projIndex + 1]?.thumbnail || "/placeholder.png"}`}
-							/>
-							{projectsData[projIndex + 1] && (
-								<div className="text-center font-bold">
-									{projectsData[projIndex + 1].name}
-								</div>
-							)}
-						</div>
-					</div>
-
-					<div className="flex justify-between w-[30%] font-bold text-3xl">
-						<button
-							type="button"
-							onClick={handleLeft}
-							className="hover:text-console"
-						>
-							{"⮜"}
-						</button>
-						<div className="font-bold text-console">
+				<div className="z-10 h-[150px] absolute translate-y-28 text-center">
+					<h1 className="flex justify-center text-2xl text-console font-bold">
+						<div className="relative">
+							<span className="absolute -left-6 animate-projectLeftQuote">❝</span>
 							{projectsData[projIndex].name}
+							<span className="absolute -right-6 animate-projectRightQuote">❞</span>
 						</div>
-						<button
-							type="button"
-							onClick={handleRight}
-							className="hover:text-console"
-						>
-							{"⮞"}
-						</button>
-					</div>
+					</h1>
+					<h2 className="text-base text-terminal">
+						{projectsData[projIndex].date}
+					</h2>
 
-					<div className="flex flex-col space-y-7 w-[40%] text-center text-lg">
-                        <p className="h-0 font-light text-title">{projectsData[projIndex].date}</p>
+					<p className="max-w-3xl py-2 text-base">
+						{projectsData[projIndex].description}
+					</p>
 
-						<p className="h-12">{projectsData[projIndex].description}</p>
+					<div className="my-1 flex justify-center">
+						{projectsData[projIndex].links.website && (
+							<Link
+								target="_blank"
+								className="hover:text-title text-gray-400 transition-colors"
+								href={projectsData[projIndex].links.website}
+							>
+								<FaLink size={30} />
+							</Link>
+						)}
 
-						<Link
-							className="text-base text-terminal hover:underline"
-							href={`/projects/${projectsData[projIndex].page}`}
-						>
-							[click here for details]
-						</Link>
+						{projectsData[projIndex].links.github && (
+							<Link
+								target="_blank"
+								className="hover:text-title text-gray-400 transition-colors"
+								href={projectsData[projIndex].links.github}
+							>
+								<FaGithub size={30} />
+							</Link>
+						)}
 					</div>
 				</div>
 			</section>

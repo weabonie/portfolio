@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { BackButton, titleClass } from "@/components/common";
 
 export default function About() {
 	const rolesTableHTML = `
@@ -25,21 +25,16 @@ export default function About() {
   <li>+-----------------------+</li>
   `;
 
-  const title = "/about"
-  const titleClass = "text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(6)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(6)_forwards,_blink_1s_steps(6)_infinite_1s] after:bg-white"
+	const title = "/about";
 
 	return (
-		<div className="p-10">
+		<div className="p-7 md:p-10">
 			<div className="space-y-8">
-				<h1 className={titleClass}>
-					{title}
-				</h1>
+				<h1 className={titleClass}>{title}</h1>
 
-				<Link href="/" className="text-2xl font-semibold hover:text-console">
-					{">"} back to home
-				</Link>
+				<BackButton page="home" path="/" />
 
-				<section className="text-xl space-y-4">
+				<section className="text-lg md:text-xl space-y-4">
 					<p>
 						$ Hello! My name is{" "}
 						<span className="text-cyan-200 font-bold">Duc Nguyen</span>, but you
@@ -56,13 +51,15 @@ export default function About() {
 						.
 					</p>
 
-          {/* <p>
+					{/* <p>
 						$ I am also experienced in <span className="font-bold">web development</span> and <span className="font-bold">ROBLOX game design</span>.
 					</p> */}
 
 					<p>
 						$ I always have a deep passion in blending{" "}
-						<span className="font-bold text-pink-400">technology & visual arts</span>{" "}
+						<span className="font-bold text-pink-400">
+							technology & visual arts
+						</span>{" "}
 						together!
 					</p>
 
@@ -72,18 +69,17 @@ export default function About() {
 							<span className="text-yellow-200 font-bold">proficient</span> in:
 						</div>
 
-						<div className="flex px-10 space-x-7">
+						<div className="flex flex-col md:flex-row md:px-10 md:space-x-7">
 							<ul
-								className="text-xl space-y-1"
+								className="text-lg md:text-xl space-y-0 md:space-y-1"
 								/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */
 								dangerouslySetInnerHTML={{ __html: rolesTableHTML }}
 							/>
 							<ul
-								className="text-xl space-y-1"
+								className="text-lg md:text-xl space-y-0 md:space-y-1"
 								/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */
 								dangerouslySetInnerHTML={{ __html: languageTableHTML }}
 							/>
-              
 						</div>
 					</div>
 				</section>

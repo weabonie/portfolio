@@ -18,13 +18,35 @@ export default {
       },
 
       animation: {
+        homeSelect: "selectionMove 0.4s steps(5) alternate infinite",
         typewriter: "typewriter 1.25s steps(20) forwards",
         caret:
           "typewriter 1.25s steps(20) forwards, blink 1.25s steps(20) infinite 1.25s",
-        
+        videoFade: "videoFade 0.2s linear forwards",
+
+        projectLeftQuote: "projectLeftQuote 0.4s linear alternate infinite",
+        projectRightQuote: "projectRightQuote 0.4s linear alternate infinite",
       },
 
       keyframes: {
+        projectLeftQuote: {
+          to: {
+            left: "-1.7rem"
+          }
+        },
+
+        projectRightQuote: {
+          to: {
+            right: "-1.7rem"
+          }
+        },
+
+        videoFade: {
+          to: {
+            opacity: "100",
+          }
+        },
+
         showCmd: {
           "99%": {
             visibility: "hidden",
@@ -33,6 +55,12 @@ export default {
           "100%": {
             visibility: "visible",
           },
+        },
+
+        selectionMove: {
+          to: {
+            transform: "translateX(-2.25rem)"
+          }
         },
 
         typewriter: {

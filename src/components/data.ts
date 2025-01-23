@@ -19,29 +19,51 @@ export const wordsData = {
 
 export const projectsData = [
   {
-    page: "tokyostory",
     name: "TokyoStory Chatbot",
     date: "April 2024 - May 2024",
     description:
       "A fully automatic customer service app for a small Japanese gacha store based in Houston.",
 
     thumbnail: "/tokyo-story/thumbnail.jpg",
+
+    links: {
+      website: "https://tokyostorysupport.us/"
+    }
   },
 
   {
-    page: "uhevents",
     name: "UH Events",
     date: "May 2024 - July 2024",
     description:
       "An app that allows students to learn about upcoming events and find event locations and information intuitively.",
     thumbnail: "/uh-events/thumbnail.jpg",
+
+    links: {
+      github: "https://github.com/coogism/UHEvents"
+    }
   },
 
   {
-    page: "roblox",
-    name: "A Roblox Game",
+    name: "ROBLOX Tower Defense Game",
     date: "May 2023 - Present",
-    description: "This is a cool game",
-    thumbnail: "/placeholder.png",
+    description: "A tower defense game where players try to survive waves of increasingly hard enemies by placing towers to attack. Features multiple maps and difficulties.",
+    thumbnail: "/ntd/thumbnail.webp",
+
+    video: "/ntd/preview.mp4",
+
+    links: {
+      website: "https://www.roblox.com/games/17494686351"
+    }
+  },
+
+  {
+    name: "portfolio",
+    date: "Jan 2025",
+    description: "The website you are currently visiting ^^",
+    thumbnail: "/portfolio/thumbnail.png",
+
+    links: {
+      github: "https://github.com/weabonie/portfolio"
+    }
   },
 ];

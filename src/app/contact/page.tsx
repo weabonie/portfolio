@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { BackButton, titleClass } from "@/components/common";
 import { useEffect, useState } from "react";
 
 export default function About() {
@@ -8,9 +8,7 @@ export default function About() {
 	const [toggleSocials, setToggleSocials] = useState<boolean>(false);
 
 	const title = "/contact";
-	const titleClass =
-		"text-7xl h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(8)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(8)_forwards,_blink_1s_steps(8)_infinite_1s] after:bg-white";
-
+	
 	const printClass =
 		"text-xl h-9 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-[typewriter_1s_steps(20)_forwards] before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-[typewriter_1s_steps(20)_forwards,_blink_1s_steps(20)_infinite_1s] after:bg-white";
 
@@ -25,10 +23,10 @@ export default function About() {
 		}, 1000);
 	}, []);
 
-    const emailLink = "mailto:weabonie@gmail.com"
-    const linkedInLink = "https://www.linkedin.com/in/duc-nguyen-b27425287"
-    const githubLink = "https://github.com/weabonie"
-    const igLink = "https://www.instagram.com/weabonie"
+	const emailLink = "mailto:weabonie@gmail.com";
+	const linkedInLink = "https://www.linkedin.com/in/duc-nguyen-b27425287";
+	const githubLink = "https://github.com/weabonie";
+	const igLink = "https://www.instagram.com/weabonie";
 
 	const contactTableHTML = `
   <li>+-----------------+</li>
@@ -42,13 +40,11 @@ export default function About() {
   `;
 
 	return (
-		<div className="p-10">
+		<div className="p-7 md:p-10">
 			<div className="space-y-10">
 				<h1 className={titleClass}>{title}</h1>
 
-				<Link href="/" className="text-2xl font-semibold hover:text-console">
-					{">"} back to home
-				</Link>
+				<BackButton page="home" path="/" />
 
 				<section className="text-xl space-y-5">
 					<h1 className="text-3xl">
