@@ -104,7 +104,7 @@ export default function Home() {
 		return (
 			<main>
 				<section>
-					<h1 className="text-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+					<h1 className={`${bootText === "booting..." && "booting"} text-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}>
 						{bootText}
 					</h1>
 				</section>

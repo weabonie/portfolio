@@ -17,6 +17,32 @@ export const wordsData = {
   },
 };
 
+export const expData = [
+  {
+    role: "Software Development Director",
+    company: "Code[Coogs]",
+    location: "University of Houston",
+    date: "May 2024 - Dec 2024",
+    description: ""
+  },
+
+  {
+    role: "Digital Marketing Intern",
+    company: "APU American International Schools",
+    location: "Ho Chi Minh City, Vietnam",
+    date: "Jul 2023 - Dec 2023",
+    description: "",
+  },
+
+  {
+    role: "Graphic Designer",
+    company: "CodeRED Astra",
+    location: "UH",
+    date: "Mar 2024 - Dec 2024",
+    description: "",
+  },
+];
+
 export const projectsData = [
   {
     name: "TokyoStory Chatbot",

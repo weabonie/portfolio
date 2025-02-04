@@ -24,3 +24,14 @@ body {
 .swiper-slide {
   -webkit-box-reflect: below 20px linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
 }
+
+.booting {
+  clip-path: inset(0 3ch 0 0);
+  animation: l 1s steps(4, jump-none) infinite;
+}
+
+@keyframes l {
+  to {
+    clip-path: inset(0)
+  }
+}
