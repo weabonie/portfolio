@@ -13,7 +13,9 @@ export default function About() {
 
 				<BackButton page="home" path="/" />
 
-				<section className="grid grid-cols-4 gap-4">
+				<span>WIP ;-;</span>
+
+				{/* <section className="grid grid-cols-4 gap-4">
 					{expData.map((experience) => (
 						<div className="flex flex-col justify-between h-[160px] p-5 border-2" key={experience.role}>
 							<div className="">
@@ -24,7 +26,7 @@ export default function About() {
 							<h2 className="text-lg text-gray-200">{experience.date}</h2>
 						</div>
 					))}
-				</section>
+				</section> */}
 			</div>
 		</div>
 	);
