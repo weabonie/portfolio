@@ -37,8 +37,6 @@ export default function About() {
 				<section className="text-lg md:text-xl space-y-4">
 					<p>
 						$ Hello! My name is{" "}
-						<span className="text-cyan-200 font-bold">Duc Nguyen</span>, but you
-						can just call me{" "}
 						<span className="text-cyan-200 font-bold">Henry</span>.
 					</p>
 
