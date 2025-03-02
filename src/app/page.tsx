@@ -132,7 +132,7 @@ export default function Home() {
 			<section className="space-y-9 md:space-y-12 z-10 w-[max-content]">
 				<section className="w-[max-content]">
 					<h1 className="text-3xl md:text-6xl lg:text-7xl h-9 md:h-20 relative w-[max-content] font-mono before:absolute before:inset-0 before:animate-typewriter before:bg-background after:absolute after:inset-0 after:w-[0.125em] after:animate-caret after:bg-white">
-						weabonie&apos;s portfolio
+						henry&apos;s portfolio
 					</h1>
 
 					<div className="text-xl md:text-2xl w-[max-content] font-bold text-gray-400">

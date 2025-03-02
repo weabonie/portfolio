@@ -37,7 +37,7 @@ export default function About() {
 				<section className="text-lg md:text-xl space-y-4">
 					<p>
 						$ Hello! My name is{" "}
-						<span className="text-cyan-200 font-bold">Henry</span>.
+						<span className="text-cyan-200 font-bold">Henry Nguyen</span>.
 					</p>
 
 					<p>
