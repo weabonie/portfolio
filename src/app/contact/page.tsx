@@ -26,7 +26,6 @@ export default function About() {
 	const emailLink = "mailto:weabonie@gmail.com";
 	const linkedInLink = "https://www.linkedin.com/in/duc-nguyen-b27425287";
 	const githubLink = "https://github.com/weabonie";
-	const igLink = "https://www.instagram.com/weabonie";
 
 	const contactTableHTML = `
   <li>+-----------------+</li>
@@ -35,7 +34,6 @@ export default function About() {
 <li>|&nbsp; <a class="text-[#fa7272] hover:underline" href="${emailLink}">Email</a> ${"&nbsp;".repeat(9)}|</li>
 <li>|&nbsp; <a target="_blank" rel="noopener noreferrer" class="text-[#7ab1e7] hover:underline" href="${linkedInLink}">LinkedIn</a> ${"&nbsp;".repeat(6)}|</li>
 <li>|&nbsp; <a target="_blank" rel="noopener noreferrer" class="text-[#b98ff8] hover:underline" href="${githubLink}">GitHub</a> ${"&nbsp;".repeat(8)}|</li>
-<li>|&nbsp; <a target="_blank" rel="noopener noreferrer" class="text-[#ba845d] hover:underline" href="${igLink}">Instagram</a> ${"&nbsp;".repeat(5)}|</li>
 <li>+-----------------+</li>
   `;
 
